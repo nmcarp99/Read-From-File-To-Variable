@@ -28,8 +28,15 @@ vector <string> getStrings(string filename) {
 
     return str;
 }
-int writeInts(string filename, vector< int > values, int numVals) {
-    fstream file(filename);
+int writeInts(string filename, vector< int > values, int numVals, bool append = false) {
+    fstream file;
+    if (!append) {
+        file.open(filename, fstream::trunc | fstream::out);
+    }
+    else {
+        file.open(filename, fstream::app | fstream::out);
+        file << endl;
+    }
 
     for (int i = 0; i < numVals; i++) {
         file << values[i];
@@ -42,8 +49,15 @@ int writeInts(string filename, vector< int > values, int numVals) {
 
     return 0;
 }
-int writeStrings(string filename, vector< string > values, int numVals) {
-    fstream file(filename);
+int writeStrings(string filename, vector< string > values, int numVals, bool append = false) {
+    fstream file;
+    if (!append) {
+        file.open(filename, fstream::trunc | fstream::out);
+    }
+    else {
+        file.open(filename, fstream::app | fstream::out);
+        file << endl;
+    }
 
     for (int i = 0; i < numVals; i++) {
         file << values[i];
