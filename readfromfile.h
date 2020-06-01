@@ -28,3 +28,31 @@ vector <string> getStrings(string filename) {
 
     return str;
 }
+int writeInts(string filename, vector< int > values, int numVals) {
+    fstream file(filename);
+
+    for (int i = 0; i < numVals; i++) {
+        file << values[i];
+        if (i != numVals - 1) {
+            file << endl;
+        }
+    }
+
+    file.close();
+
+    return 0;
+}
+int writeStrings(string filename, vector< string > values, int numVals) {
+    fstream file(filename);
+
+    for (int i = 0; i < numVals; i++) {
+        file << values[i];
+        if (i != numVals - 1) {
+            file << endl;
+        }
+    }
+
+    file.close();
+
+    return 0;
+}
