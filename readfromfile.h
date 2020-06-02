@@ -70,3 +70,41 @@ int writeStrings(string filename, vector< string > values, int numVals, bool app
 
     return 0;
 }
+int replaceLineStrings(string filename, string value, int replaceLine, int numVals) {
+    vector< string > currentFile = getStrings(filename);
+    fstream file(filename, fstream::out | fstream::trunc);
+    for (int i = 0; i < numVals; i++) {
+        if (i != replaceLine) {
+            file << currentFile[i];
+        }
+        else {
+            file << value;
+        }
+        if (i != numVals - 1) {
+            file << endl;
+        }
+    }
+
+    file.close();
+
+    return 0;
+}
+int replaceLineInts(string filename, int value, int replaceLine, int numVals) {
+    vector< string > currentFile = getStrings(filename);
+    fstream file(filename, fstream::out | fstream::trunc);
+    for (int i = 0; i < numVals; i++) {
+        if (i != replaceLine) {
+            file << currentFile[i];
+        }
+        else {
+            file << value;
+        }
+        if (i != numVals - 1) {
+            file << endl;
+        }
+    }
+
+    file.close();
+
+    return 0;
+}
