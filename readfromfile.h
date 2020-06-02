@@ -108,3 +108,16 @@ int replaceLineInts(string filename, int value, int replaceLine, int numVals) {
 
     return 0;
 }
+string appData() {
+    char* userVal;
+    size_t len;
+    errno_t appdataErr;
+    string result;
+    _dupenv_s(&userVal, &len, "APPDATA");
+    for (int i = 0; userVal[i]; i++) {
+        result += userVal[i];
+    }
+    result += "\\";
+    free(userVal);
+    return result;
+}
